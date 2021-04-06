@@ -9,7 +9,7 @@ function App() {
       </div>
 
       <div className="Menu">
-        <FaHome color="white" size={50} style={{marginTop: 95}} />
+        <FaHome color="white" size={40} style={{marginTop: 95}} />
       </div>
 
       <div className="Content">
