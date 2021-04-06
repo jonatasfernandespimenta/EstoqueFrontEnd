@@ -10,6 +10,7 @@ body {
 
 .Header {
   height: 10vh;
+  width: 100%;
   background-color: #151515;
   grid-area: h;
 }
@@ -17,6 +18,10 @@ body {
 .Menu {
   background-color: #1D1D1D;
   grid-area: m;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
 }
 
 .Content {
