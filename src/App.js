@@ -1,5 +1,7 @@
 import './App.css';
 import Input from './Components/Input';
+import Product from './Components/Product';
+
 import { FaHome } from 'react-icons/fa';
 
 function App() {
@@ -13,11 +15,9 @@ function App() {
       </div>
 
       <div className="Content">
-
         <Input/>
-
         <div className="Products">
-
+          <Product />
         </div>
       </div>
 
