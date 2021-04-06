@@ -5,9 +5,43 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #33302E;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.Header {
+  height: 10vh;
+  background-color: #151515;
+  grid-area: h;
+}
+
+.Menu {
+  background-color: #1D1D1D;
+  grid-area: m;
+}
+
+.Content {
+  display: flex;
+  margin-top: -90vh;
+  background-color: transparent;
+  grid-area: c;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Container {
+  display: grid;
+  grid-template-columns: 10vh 6fr;
+  grid-template-rows: 100vh 0vh;
+  grid-template-areas: "m h h"
+                       "m c c"
+                       "m c c";
+}
+
+.Products {
+  background-color: #F5F5F5;
+  border-radius: 6px;
+  height: 80%;
+  width: 80%;
 }
