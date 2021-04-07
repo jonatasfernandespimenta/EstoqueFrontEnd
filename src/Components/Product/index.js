@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getProducts } from '../../services/endpoints';
 
-import { Container, Text, Button } from './styles';
+import { Container, Text, Button, Row } from './styles';
 
 function Product({ setVisible }) {
 
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getProducts();
+      console.log(res.data)
+      setData(res.data);
+    };
+    fetchData();
+  }, [])
+
   return(
     <>
-      <Container>
-        <Text>Nome: Lorem Ipsum</Text>
-        <Text>SKU: Lorem Ipsum</Text>
-        <Text>Quantidade: 00</Text>
-
-        <Button onClick={() => setVisible(true)}>+</Button>
-      </Container>
+      {
+        data?.map((item) => (
+          <Container>
+            <Row>
+              <Text>Nome: {item.name}</Text>
+              <Text>SKU: {item.sku}</Text>
+              <Text>Quantidade: {item.quantity}</Text>
+      
+              <Button onClick={() => setVisible(true)}>+</Button>
+            </Row>
+          </Container>
+        ))
+      }
     </>
   );
 }

@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Row = styled.div`
   width: 100%;
   height: 10%;
   background: white;
-  margin-bottom: 10px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,6 +17,7 @@ export const Container = styled.div`
 
 export const Text = styled.p`
   margin-left: 30px;
+  text-align: left;
 `;
 
 export const Button = styled.button`
