@@ -5,12 +5,14 @@ export const Container = styled.div`
   height: 3vh;
   margin: 1.5%;
   border-radius: 6px;
-  border-width: 0px;
   background: #F5F5F5;
   justify-content: center;
   align-items: center;
   display: flex;
   padding: 6px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #00000080;
 `;
 
 export const InputContainer = styled.input`

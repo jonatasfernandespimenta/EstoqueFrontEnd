@@ -3,12 +3,12 @@ import { FaSearch } from 'react-icons/fa';
 
 import { InputContainer, Container } from './styles';
 
-function Input() {
+function Input({ placeholderText, isSearch, type, onChange, value }) {
   return(
     <>
       <Container>
-        <FaSearch color="#787878" style={{ marginRight: 6, marginLeft: 4 }} />
-        <InputContainer placeholder={'Busque por um produto...'} />
+        {isSearch ? <FaSearch color="#787878" style={{ marginRight: 6, marginLeft: 4 }} /> : null }
+        <InputContainer type={type} placeholder={placeholderText} onChange={onChange} value={value} />
       </Container>
     </>
   );

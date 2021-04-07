@@ -3,8 +3,12 @@ import Input from './Components/Input';
 import Product from './Components/Product';
 
 import { FaHome } from 'react-icons/fa';
+import { useState } from 'react';
+import AddItemModal from './Components/AddItemModal';
 
 function App() {
+  const [visible, setVisible] = useState(false);
+
   return (
     <div className="Container">
       <div className="Header">
@@ -15,9 +19,14 @@ function App() {
       </div>
 
       <div className="Content">
-        <Input/>
+        <Input placeholderText="Busque por um produto..." isSearch />
         <div className="Products">
-          <Product />
+          {
+            visible ?
+            <AddItemModal/>
+            :
+            <Product setVisible={setVisible} />
+          }
         </div>
       </div>
 
