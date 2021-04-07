@@ -3,6 +3,8 @@ import { createItem } from '../../services/endpoints';
 import Input from '../Input';
 import { ToastContainer } from 'react-toastify';
 
+import { triggerBase64Download } from 'react-base64-downloader';
+
 import { success, error } from '../Toast';
 
 import { Container, Button } from './styles';
@@ -14,9 +16,12 @@ function AddItemModal({ setVisible, productSku }) {
 
   const handleAddItem = async() => {
     try {
-      await createItem(price, productSku);
+      const res = await createItem(price, productSku);
+
+      
+      triggerBase64Download(res.data.qrcode, productSku);
       success('😄 Entrada realizada com sucesso!', 'top-right');
-    } catch (error) {
+    } catch (e) {
       error('😕 Houve uma falha ao realizar o processo', 'top-right')
     }
   }
