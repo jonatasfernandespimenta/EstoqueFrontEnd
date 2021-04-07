@@ -8,6 +8,7 @@ import AddItemModal from './Components/AddItemModal';
 
 function App() {
   const [visible, setVisible] = useState(false);
+  const [productSku, setProductSku] = useState('');
 
   return (
     <div className="Container">
@@ -23,9 +24,9 @@ function App() {
         <div className="Products">
           {
             visible ?
-            <AddItemModal setVisible={setVisible} />
+            <AddItemModal setVisible={setVisible} productSku={productSku} />
             :
-            <Product setVisible={setVisible} />
+            <Product setVisible={setVisible} setProductSku={setProductSku} />
           }
         </div>
       </div>
