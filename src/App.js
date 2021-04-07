@@ -23,7 +23,7 @@ function App() {
         <div className="Products">
           {
             visible ?
-            <AddItemModal/>
+            <AddItemModal setVisible={setVisible} />
             :
             <Product setVisible={setVisible} />
           }
