@@ -5,7 +5,6 @@ import Product from './Components/Product';
 import { FaHome, FaPlusCircle } from 'react-icons/fa';
 import { useState } from 'react';
 import AddItemModal from './Components/AddItemModal';
-import { getProductByNameOrSku } from './services/endpoints';
 
 function App() {
   const [visible, setVisible] = useState(false);

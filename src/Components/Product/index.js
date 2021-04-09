@@ -6,10 +6,10 @@ import { Container, Text, Button, Row } from './styles';
 function Product({ setVisible, setProductSku, setProductName, search }) {
 
   const [data, setData] = useState(null);
-  console.log(search != '')
+  console.log(search !== '')
   useEffect(() => {
     const fetchData = async () => {
-      const res = search != '' ? await getProductByNameOrSku(search) : await getProducts();
+      const res = search !== '' ? await getProductByNameOrSku(search) : await getProducts();
       setData(res.data);
     };
     fetchData();

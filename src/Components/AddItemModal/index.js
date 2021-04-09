@@ -14,7 +14,7 @@ function AddItemModal({ setVisible, productSku, productName }) {
   const [quantity, setQuantity] = useState(null);
   const [date, setDate] = useState(new Date());
 
-  useEffect(() => quantity < 0 ? setQuantity(0) : null);
+  useEffect(() => quantity < 0 ? setQuantity(0) : null, [quantity]);
 
   const handleAddItem = async() => {
     try {
@@ -44,7 +44,6 @@ function AddItemModal({ setVisible, productSku, productName }) {
         <DatePicker
           selected={date}
           onChange={date => setDate(date)}
-          dateFormat="P"
           dateFormat="dd/MM/yyyy"
           locale="pt"
         />
