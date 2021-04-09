@@ -34,8 +34,6 @@ function AddItemModal({ setVisible, productSku, productName }) {
     }
   }
 
-  console.log(date)
-
   return(
     <>
       <ToastContainer/>

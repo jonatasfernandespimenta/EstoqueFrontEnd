@@ -5,11 +5,13 @@ import Product from './Components/Product';
 import { FaHome } from 'react-icons/fa';
 import { useState } from 'react';
 import AddItemModal from './Components/AddItemModal';
+import { getProductByNameOrSku } from './services/endpoints';
 
 function App() {
   const [visible, setVisible] = useState(false);
   const [productSku, setProductSku] = useState('');
   const [productName, setProductName] = useState('');
+  const [search, setSearch] = useState('');
 
   return (
     <div className="Container">
@@ -21,13 +23,13 @@ function App() {
       </div>
 
       <div className="Content">
-        <Input placeholderText="Busque por um produto..." isSearch />
+        <Input placeholderText="Busque por um produto..." isSearch value={search} onChange={e => setSearch(e.target.value)} />
         <div className="Products">
           {
             visible ?
             <AddItemModal setVisible={setVisible} productSku={productSku} productName={productName} />
             :
-            <Product setVisible={setVisible} setProductSku={setProductSku} setProductName={setProductName} />
+            <Product setVisible={setVisible} setProductSku={setProductSku} setProductName={setProductName} search={search} />
           }
         </div>
       </div>
