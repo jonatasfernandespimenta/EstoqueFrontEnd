@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getLog } from '../../services/endpoints';
-import { Button, Container, Row, Text } from '../Product/styles';
+import { Container, Row, Text } from '../Product/styles';
 
 // import { Container } from './styles';
 
@@ -30,8 +30,6 @@ function Logs() {
                   <Text>Tipo: Entrada</Text>
     
                   <Text>Quantidade: {item.qtd}</Text>
-          
-                  <Button>+</Button>
                 </Row>
               </Container>
             )
@@ -50,8 +48,6 @@ function Logs() {
                 <Text>Tipo: Saida</Text>
           
                 <Text>Quantidade: {item.qtd}</Text>
-                
-                <Button>+</Button>
               </Row>
             </Container>
             );
