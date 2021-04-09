@@ -3,7 +3,7 @@ import { getProducts } from '../../services/endpoints';
 
 import { Container, Text, Button, Row } from './styles';
 
-function Product({ setVisible, setProductSku }) {
+function Product({ setVisible, setProductSku, setProductName }) {
 
   const [data, setData] = useState(null);
 
@@ -25,7 +25,7 @@ function Product({ setVisible, setProductSku }) {
               <Text>SKU: {item.sku}</Text>
               <Text>Quantidade: {item.quantity}</Text>
       
-              <Button onClick={() => { setVisible(true); setProductSku(item.sku) }}>+</Button>
+              <Button onClick={() => { setVisible(true); setProductSku(item.sku); setProductName(item.name) }}>+</Button>
             </Row>
           </Container>
         ))

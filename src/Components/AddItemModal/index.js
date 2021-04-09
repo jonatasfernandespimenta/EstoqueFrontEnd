@@ -7,14 +7,16 @@ import { success, error } from '../Toast';
 
 import { Container, Button } from './styles';
 
-function AddItemModal({ setVisible, productSku }) {
+function AddItemModal({ setVisible, productSku, productName }) {
   const [quantity, setQuantity] = useState(null);
 
   useEffect(() => quantity < 0 ? setQuantity(0) : null);
 
+  console.log(productName)
+
   const handleAddItem = async() => {
     try {
-      const res = await createItem(quantity, productSku);
+      const res = await createItem(quantity, productSku, productName);
 
       const url = window.URL.createObjectURL(new Blob([res.data]))
       const link = document.createElement('a')
