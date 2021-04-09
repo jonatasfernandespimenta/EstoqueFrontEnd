@@ -50,3 +50,10 @@ body {
   height: 80%;
   width: 80%;
 }
+
+.IconButton {
+  background-color: transparent;
+  border-width: 0;
+  cursor: pointer;
+  margin-top: 50px;
+}

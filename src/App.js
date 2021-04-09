@@ -2,7 +2,7 @@ import './App.css';
 import Input from './Components/Input';
 import Product from './Components/Product';
 
-import { FaHome } from 'react-icons/fa';
+import { FaHome, FaPlusCircle } from 'react-icons/fa';
 import { useState } from 'react';
 import AddItemModal from './Components/AddItemModal';
 import { getProductByNameOrSku } from './services/endpoints';
@@ -20,6 +20,9 @@ function App() {
 
       <div className="Menu">
         <FaHome color="white" size={40} style={{marginTop: 95}} />
+        <button className="IconButton">
+          <FaPlusCircle color="white" size={40} />
+        </button>
       </div>
 
       <div className="Content">
