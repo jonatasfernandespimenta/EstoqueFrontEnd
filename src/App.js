@@ -7,6 +7,7 @@ import { useState } from 'react';
 import AddItemModal from './Components/AddItemModal';
 import Logs from './Components/Logs';
 import { Tooltip } from '@material-ui/core';
+import AddProduct from './Components/AddProduct';
 
 
 function App() {
@@ -35,6 +36,12 @@ function App() {
         <Logs/>
       )
     }
+
+    if(content === 'AddProduct') {
+      return(
+        <AddProduct/>
+      )
+    }
   }
 
   return (
@@ -56,7 +63,7 @@ function App() {
         </Tooltip>
 
         <Tooltip title="Adicionar Produto" placement="right-end">
-          <button className="IconButton">
+          <button onClick={() => setContent('AddProduct')} className="IconButton">
             <FaPlusCircle color="white" size={40} />
           </button>
         </Tooltip>
