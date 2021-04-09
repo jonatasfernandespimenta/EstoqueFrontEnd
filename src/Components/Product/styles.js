@@ -18,6 +18,7 @@ export const Row = styled.div`
 export const Text = styled.p`
   margin-left: 30px;
   text-align: left;
+  width: 250px;
 `;
 
 export const Button = styled.button`
