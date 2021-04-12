@@ -5,8 +5,8 @@ import { getLog } from '../../services/endpoints';
 import { Container } from './styles';
 
 function HomeComponent() {
-  const [inputData, setInputData] = useState(null);
-  const [withdrawData, setWithdrawData] = useState(null);
+  const [inputData, setInputData] = useState([]);
+  const [withdrawData, setWithdrawData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,16 +22,16 @@ function HomeComponent() {
     () => [
       {
         label: 'Entrada',
-        data: inputData?.map((i) => [parseInt(i.date.substr(3, 2)), i.qtd]).filter(x => !Number.isNaN(x[0]))
+        data: inputData?.map((i) => [parseInt(i.date.substr(0, 2)), i.qtd]).filter(x => !Number.isNaN(x[0]))
       },
       {
         label: 'Saida',
-        data: withdrawData?.map((i) => [parseInt(i.date.substr(3, 2)), i.qtd]).filter(x => !Number.isNaN(x[0]))
+        data: withdrawData?.map((i) => [parseInt(i.date.substr(0, 2)), i.qtd]).filter(x => !Number.isNaN(x[0]))
       }
     ],
-    []
+    [inputData, withdrawData]
   )
-
+ 
   const axes = React.useMemo(
     () => [
       { primary: true, type: 'ordinal', position: 'bottom' },
