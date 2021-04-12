@@ -19,11 +19,11 @@ function Logs() {
 
   return (
     <>
+      <Container>
       {
         inputData?.map((item) => {
           if(item.date !== 'Invalid Date') {
             return(
-              <Container>
                 <Row>
                   <Text>Data: {item.date}</Text>
     
@@ -31,7 +31,6 @@ function Logs() {
     
                   <Text>Quantidade: {item.qtd}</Text>
                 </Row>
-              </Container>
             )
           }
         }
@@ -41,7 +40,6 @@ function Logs() {
         withdrawData?.map((item) => {
           if(item.date !== 'Invalid Date') {
             return(
-              <Container>
               <Row>
                 <Text>Data: {item.date}</Text>
           
@@ -49,12 +47,12 @@ function Logs() {
           
                 <Text>Quantidade: {item.qtd}</Text>
               </Row>
-            </Container>
             );
           }
         }
-       )
+        )
       }
+      </Container>
     </>
   );
 }

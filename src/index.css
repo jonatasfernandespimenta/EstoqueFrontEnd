@@ -24,15 +24,30 @@ body {
   padding: 15px;
 }
 
-.Content {
-  display: flex;
-  margin-top: -90vh;
-  background-color: transparent;
-  grid-area: c;
-  padding: 15px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+@media (min-width:300px) { 
+  .Content {
+    display: flex;
+    margin-top: -100vh;
+    background-color: transparent;
+    grid-area: c;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:1025px) { 
+  .Content {
+    display: flex;
+    margin-top: -90vh;
+    background-color: transparent;
+    grid-area: c;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 
 .Container {
@@ -49,6 +64,7 @@ body {
   border-radius: 6px;
   height: 80%;
   width: 80%;
+  overflow-y: auto;
 }
 
 .IconButton {

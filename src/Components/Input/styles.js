@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 20%;
+  @media only screen 
+  and (min-device-width : 300px) 
+  and (max-device-width : 812px) {
+    width: 80%;
+  }
   height: 3vh;
   margin: 1.5%;
   border-radius: 6px;

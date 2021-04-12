@@ -26,4 +26,9 @@ export const Button = styled.button`
   cursor: pointer;
   font-weight: bold;
   margin: 5px;
+  @media only screen 
+  and (min-device-width : 300px) 
+  and (max-device-width : 812px) {
+    width: 150px;
+  }
 `;

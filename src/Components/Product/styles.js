@@ -13,12 +13,25 @@ export const Row = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media only screen 
+  and (min-device-width : 300px) 
+  and (max-device-width : 812px) {
+    flex-direction: column;
+  }
 `;
 
 export const Text = styled.p`
   margin-left: 30px;
   text-align: left;
   width: 250px;
+
+  @media only screen 
+  and (min-device-width : 300px) 
+  and (max-device-width : 812px){
+    text-align: center;
+    margin-left: 0px;
+  }
 `;
 
 export const Button = styled.button`
@@ -35,4 +48,11 @@ export const Button = styled.button`
   font-size: 20px;
   cursor: pointer;
   font-weight: bold;
+  @media only screen 
+  and (min-device-width : 300px) 
+  and (max-device-width : 812px) {
+    width: 50px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
 `;

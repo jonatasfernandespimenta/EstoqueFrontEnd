@@ -4,12 +4,13 @@ import AddItemModal from "../../Components/AddItemModal"
 import AddProduct from "../../Components/AddProduct"
 import Logs from "../../Components/Logs"
 import Product from "../../Components/Product"
+import HomeComponent from "../../Components/Home/"
 
 export const handleMenuButtons = (setContent) => {
   return(
     <div className="Menu">
     <Tooltip title="Home" placement="right-end">
-      <button className="IconButton">
+      <button className="IconButton" onClick={() => setContent('home')}>
         <FaHome color="white" size={40} />
       </button>
     </Tooltip>
@@ -47,6 +48,12 @@ export const handleContent = (content, productSku, productName, setProductSku, s
         }
       </>
     );
+  }
+
+  if(content === 'home') {
+    return(
+      <HomeComponent/>
+    )
   }
 
   if(content === 'logs') {
