@@ -1,27 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-charts'
+import { getLog } from '../../services/endpoints';
 
 import { Container } from './styles';
 
 function HomeComponent() {
+  const [inputData, setInputData] = useState(null);
+  const [withdrawData, setWithdrawData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getLog();
+      setInputData(res.data.input);
+      setWithdrawData(res.data.withdraw);
+    };
+    fetchData();
+  }, [])
+
+
   const data = React.useMemo(
     () => [
       {
-        label: 'Series 1',
-        data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+        label: 'Entrada',
+        data: inputData?.map((i) => [parseInt(i.date.substr(3, 2)), i.qtd]).filter(x => !Number.isNaN(x[0]))
       },
       {
-        label: 'Series 2',
-        data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
+        label: 'Saida',
+        data: withdrawData?.map((i) => [parseInt(i.date.substr(3, 2)), i.qtd]).filter(x => !Number.isNaN(x[0]))
       }
     ],
     []
   )
- 
+
   const axes = React.useMemo(
     () => [
-      { primary: true, type: 'linear', position: 'bottom' },
-      { type: 'linear', position: 'left' }
+      { primary: true, type: 'ordinal', position: 'bottom' },
+      { position: 'left', type: 'linear', stacked: true }
     ],
     []
   )
@@ -29,7 +43,7 @@ function HomeComponent() {
   return(
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
     <Container>
-      <Chart data={data} axes={axes} series={{type: 'bar'}} />
+      <Chart data={data} axes={axes} series={{type: 'bar', series: 10}} tooltip />
     </Container>
     </div>
   );

@@ -10,8 +10,8 @@ function App() {
   const [productSku, setProductSku] = useState('');
   const [productName, setProductName] = useState('');
   const [search, setSearch] = useState('');
-  const [content, setContent] = useState('');
-  
+  const [content, setContent] = useState('home');
+
   return (
     <div className="Container">
       <div className="Header" />
