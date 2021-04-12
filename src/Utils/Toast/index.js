@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const error = (text, position) => toast.error(text, {
 	position: position,
-	autoClose: 9000,
+	autoClose: 2500,
 	hideProgressBar: false,
 	closeOnClick: true,
 	pauseOnHover: true,
@@ -12,7 +12,7 @@ export const error = (text, position) => toast.error(text, {
 
 export const success = (text, position) => toast.success(text, {
 	position: position,
-	autoClose: 9000,
+	autoClose: 2500,
 	hideProgressBar: false,
 	closeOnClick: true,
 	pauseOnHover: true,
