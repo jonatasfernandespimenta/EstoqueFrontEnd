@@ -22,33 +22,30 @@ function Logs() {
       <Container>
       {
         inputData?.map((item) => {
-          if(item.date !== 'Invalid Date') {
-            return(
-                <Row>
-                  <Text>Data: {item.date}</Text>
+          return(
+              <Row>
+                <Text>Data: {item.date}</Text>
     
-                  <Text>Tipo: Entrada</Text>
+                <Text>Tipo: Entrada</Text>
     
-                  <Text>Quantidade: {item.qtd}</Text>
-                </Row>
-            )
-          }
+                <Text>Quantidade: {item.info.quantity}</Text>
+              </Row>
+          )
         }
         )
       }
+
       {
         withdrawData?.map((item) => {
-          if(item.date !== 'Invalid Date') {
-            return(
-              <Row>
-                <Text>Data: {item.date}</Text>
+          return(
+            <Row>
+              <Text>Data: {item.date}</Text>
           
-                <Text>Tipo: Saida</Text>
+              <Text>Tipo: Saida</Text>
           
-                <Text>Quantidade: {item.qtd}</Text>
-              </Row>
-            );
-          }
+              <Text>Quantidade: {item.qtd}</Text>
+            </Row>
+          );
         }
         )
       }

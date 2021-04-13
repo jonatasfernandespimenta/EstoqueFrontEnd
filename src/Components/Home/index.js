@@ -17,16 +17,15 @@ function HomeComponent() {
     fetchData();
   }, [])
 
-
   const data = React.useMemo(
     () => [
       {
         label: 'Entrada',
-        data: inputData?.map((i) => [parseInt(i.date.substr(0, 2)), i.qtd]).filter(x => !Number.isNaN(x[0]))
+        data: inputData?.map((i) => [i.date, i.info.quantity]).filter(x => x[0] !== 'Invalid Date')
       },
       {
         label: 'Saida',
-        data: withdrawData?.map((i) => [parseInt(i.date.substr(0, 2)), i.qtd]).filter(x => !Number.isNaN(x[0]))
+        data: withdrawData?.map((i) => [i.date, i.info.quantity]).filter(x => x[0] !== 'Invalid Date')
       }
     ],
     [inputData, withdrawData]
@@ -39,11 +38,23 @@ function HomeComponent() {
     ],
     []
   )
- 
+
+  const series = React.useCallback(
+    (s, i) => (
+      {
+      type:
+        i === 0
+          ? 'bar'
+          : 'line'
+
+    }),
+    []
+  )
+
   return(
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
     <Container>
-      <Chart data={data} axes={axes} series={{type: 'bar', series: 10}} tooltip />
+      <Chart data={data} axes={axes} series={series} tooltip />
     </Container>
     </div>
   );

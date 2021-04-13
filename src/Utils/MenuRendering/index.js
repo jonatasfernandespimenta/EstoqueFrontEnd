@@ -1,5 +1,5 @@
 import { Tooltip } from "@material-ui/core"
-import { FaArchive, FaFileContract, FaHome, FaPlusCircle } from "react-icons/fa"
+import { FaArchive, FaFileContract, FaHome, FaPlusCircle, FaCubes } from "react-icons/fa"
 import AddItemModal from "../../Components/AddItemModal"
 import AddProduct from "../../Components/AddProduct"
 import Logs from "../../Components/Logs"
@@ -17,7 +17,7 @@ export const handleMenuButtons = (setContent) => {
 
     <Tooltip title="Produtos" placement="right-end">
       <button className="IconButton" onClick={() => setContent('products')}>
-        <FaArchive color="white" size={40} />
+        <FaCubes color="white" size={40} />
       </button>
     </Tooltip>
 
@@ -30,6 +30,12 @@ export const handleMenuButtons = (setContent) => {
     <Tooltip title="Logs" placement="right-end">
       <button className="IconButton" onClick={() => setContent('logs')}>
         <FaFileContract color="white" size={40} />
+      </button>
+    </Tooltip>
+
+    <Tooltip title="Estoque" placement="right-end">
+      <button className="IconButton" onClick={() => setContent('stock')}>
+        <FaArchive color="white" size={40} />
       </button>
     </Tooltip>
   </div>
