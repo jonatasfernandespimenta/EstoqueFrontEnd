@@ -11,14 +11,14 @@ import pt from 'date-fns/locale/pt-BR';
 registerLocale('pt', pt)
 
 function AddItemModal({ setVisible, productSku, productName }) {
-  const [quantity, setQuantity] = useState(null);
+  const [quantity, setQuantity] = useState(0);
   const [date, setDate] = useState(new Date());
 
   useEffect(() => quantity < 0 ? setQuantity(0) : null, [quantity]);
 
   const handleAddItem = async() => {
     try {
-      const res = await createItem(date, quantity, productSku, productName);
+      const res = await createItem(date, Number(quantity), productSku, productName);
 
       const url = window.URL.createObjectURL(new Blob([res.data]))
       const link = document.createElement('a')

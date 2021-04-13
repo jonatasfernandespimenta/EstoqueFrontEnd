@@ -5,37 +5,38 @@ import AddProduct from "../../Components/AddProduct"
 import Logs from "../../Components/Logs"
 import Product from "../../Components/Product"
 import HomeComponent from "../../Components/Home/"
+import Stock from "../../Components/Stock"
 
 export const handleMenuButtons = (setContent) => {
   return(
     <div className="Menu">
     <Tooltip title="Home" placement="right-end">
       <button className="IconButton" onClick={() => setContent('home')}>
-        <FaHome color="white" size={40} />
+        <FaHome color="white" size={35} />
       </button>
     </Tooltip>
 
     <Tooltip title="Produtos" placement="right-end">
       <button className="IconButton" onClick={() => setContent('products')}>
-        <FaCubes color="white" size={40} />
+        <FaCubes color="white" size={35} />
       </button>
     </Tooltip>
 
     <Tooltip title="Adicionar Produto" placement="right-end">
       <button onClick={() => setContent('AddProduct')} className="IconButton">
-        <FaPlusCircle color="white" size={40} />
+        <FaPlusCircle color="white" size={35} />
       </button>
     </Tooltip>
 
     <Tooltip title="Logs" placement="right-end">
       <button className="IconButton" onClick={() => setContent('logs')}>
-        <FaFileContract color="white" size={40} />
+        <FaFileContract color="white" size={35} />
       </button>
     </Tooltip>
 
     <Tooltip title="Estoque" placement="right-end">
       <button className="IconButton" onClick={() => setContent('stock')}>
-        <FaArchive color="white" size={40} />
+        <FaArchive color="white" size={35} />
       </button>
     </Tooltip>
   </div>
@@ -73,4 +74,11 @@ export const handleContent = (content, productSku, productName, setProductSku, s
       <AddProduct/>
     )
   }
+
+  if(content === 'stock') {
+    return(
+      <Stock/>
+    )
+  }  
+
 }

@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-charts'
-import { getLog } from '../../services/endpoints';
+import { getLog, getProducts } from '../../services/endpoints';
 
 import { Container } from './styles';
 
 function HomeComponent() {
   const [inputData, setInputData] = useState([]);
-  const [withdrawData, setWithdrawData] = useState([]);
+  const [balanceData, setBalanceData] = useState([]);
+  const [productId, setProductId] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await getLog();
+      const productRes = await getProducts();
+      console.log(productRes.data.quantity)
       setInputData(res.data.input);
-      setWithdrawData(res.data.withdraw);
+      setBalanceData(productRes.data.quantity);
     };
     fetchData();
   }, [])
@@ -22,13 +25,9 @@ function HomeComponent() {
       {
         label: 'Entrada',
         data: inputData?.map((i) => [i.date, i.info.quantity]).filter(x => x[0] !== 'Invalid Date')
-      },
-      {
-        label: 'Saida',
-        data: withdrawData?.map((i) => [i.date, i.info.quantity]).filter(x => x[0] !== 'Invalid Date')
       }
     ],
-    [inputData, withdrawData]
+    [inputData, balanceData]
   )
  
   const axes = React.useMemo(

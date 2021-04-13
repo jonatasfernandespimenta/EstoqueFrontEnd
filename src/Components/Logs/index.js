@@ -43,7 +43,7 @@ function Logs() {
           
               <Text>Tipo: Saida</Text>
           
-              <Text>Quantidade: {item.qtd}</Text>
+              <Text>Quantidade: {item.info.quantity}</Text>
             </Row>
           );
         }
