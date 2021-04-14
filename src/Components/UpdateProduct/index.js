@@ -10,6 +10,7 @@ function UpdateProduct({ setVisible, id }) {
   const [sku, setSku] = useState('');
   const [name, setName] = useState('');
   const [days, setDays] = useState(0);
+  const [providerDays, setProviderDays] = useState(0);
 
   useEffect(() => {
     const fetchProducts = async() => {
@@ -24,7 +25,7 @@ function UpdateProduct({ setVisible, id }) {
   const handleProduct = async() => {
 
     try {
-      await updateProduct(id, name, sku, days);
+      await updateProduct(id, name, sku, days, providerDays);
       success('😄 Produto atualizado com sucesso!', 'top-right');
     } catch (e) {
       error('😕 Houve uma falha ao realizar o processo', 'top-right') 
@@ -38,6 +39,10 @@ function UpdateProduct({ setVisible, id }) {
         <h1>Atualizar produto</h1>
         <Input placeholderText="SKU" value={sku} onChange={e => setSku(e.target.value)} />
         <Input placeholderText="Nome" value={name} onChange={e => setName(e.target.value)} />
+        <br/>
+        <br/><br/>
+        <label>Dias fornecedor</label>
+        <Input placeholderText="Dias de estoque" type="number" value={providerDays} onChange={e => setProviderDays(e.target.value)} />
         <br/>
         <label>Dias de estoque</label>
         <Input placeholderText="Dias de estoque" type="number" value={days} onChange={e => setDays(e.target.value)} />

@@ -24,7 +24,7 @@ function Stock() {
   }
 
   const handleShouldBuy = (product) => {
-    if(product.quantity / (handleLast15(product) / 15) <= product.days) {
+    if((product.quantity / (handleLast15(product) / 15)) - product.providerDays <= product.days) {
       return(
         <div style={{ background: '#d10', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h4 style={{color: 'white'}}>SIM</h4>
@@ -48,6 +48,7 @@ function Stock() {
           <th>Velocidade</th>
           <th>Dias de estoque restantes</th>
           <th>Dias de estoque desejavel</th>
+          <th>Dias para fornecimento</th>
           <th>Deve comprar?</th>
         </tr>
         {
@@ -56,9 +57,10 @@ function Stock() {
               <tr>
                 <td>{p.name}</td>
                 <td>{p.quantity}</td>
-                <td>{(handleLast15(p) / 15).toFixed(3)}</td>
+                <td>{(handleLast15(p) / 15).toFixed(2)}</td>
                 <td>{p.quantity / (handleLast15(p) / 15) == Infinity ? '-' : p.quantity / (handleLast15(p) / 15)}</td>
                 <td>{p.days}</td>
+                <td>{p.providerDays}</td>
                 <td>{handleShouldBuy(p)}</td>
               </tr>
             )
