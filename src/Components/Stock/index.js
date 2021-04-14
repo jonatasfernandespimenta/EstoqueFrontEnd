@@ -5,28 +5,28 @@ import { getProducts, getLog } from '../../services/endpoints';
 
 function Stock() {
   const [product, setProduct] = useState(null);
-  const [summed, setSummed] = useState(0);
+  const [withdrawRes, setWithdrawRes] = useState(null);
 
   useEffect(() => {
     const fetchProductData = async() => {
       const res = await getProducts();
       const withdrawRes = await getLog();
-
-      const last15 = withdrawRes.data.input.slice(Math.max(withdrawRes.data.withdraw.length - 5, 0))
-      const last15Qtd = last15?.map((p) => p.info.quantity)
-      const summedQtd = last15Qtd.reduce((a, b) => a + b, 0)
-
-      setSummed(summedQtd);
-
       setProduct(res.data)
+      setWithdrawRes(withdrawRes)
     };
     fetchProductData();
   }, [])
 
+  const handleLast15 = (product) => {
+    const last15 = withdrawRes?.data.withdraw.filter(i => i.info.sku == product.sku).slice(Math.max(withdrawRes?.data.withdraw.length - 15, 0))
+    const summed = last15?.map(i => i.info.quantity).reduce((a, b) => a + b, 0)
+    return summed
+  }
+
   const handleShouldBuy = (product) => {
-    if(product.quantity / (summed / 15) <= product.days) {
+    if(product.quantity / (handleLast15(product) / 15) <= product.days) {
       return(
-        <div style={{ background: '#20A506', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ background: '#d10', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h4 style={{color: 'white'}}>SIM</h4>
         </div>
       );
@@ -47,7 +47,7 @@ function Stock() {
           <th>Em estoque</th>
           <th>Velocidade</th>
           <th>Dias de estoque restantes</th>
-          <th>Dias de estoque deseajvel</th>
+          <th>Dias de estoque desejavel</th>
           <th>Deve comprar?</th>
         </tr>
         {
@@ -56,8 +56,8 @@ function Stock() {
               <tr>
                 <td>{p.name}</td>
                 <td>{p.quantity}</td>
-                <td>{summed / 15}</td>
-                <td>{p.quantity / (summed / 15)}</td>
+                <td>{(handleLast15(p) / 15).toFixed(2)}</td>
+                <td>{p.quantity / (handleLast15(p) / 15) == Infinity ? '-' : p.quantity / (handleLast15(p) / 15)}</td>
                 <td>{p.days}</td>
                 <td>{handleShouldBuy(p)}</td>
               </tr>
