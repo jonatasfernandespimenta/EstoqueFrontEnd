@@ -41,7 +41,7 @@ function Stock() {
 
   return(
     <>
-      <table>
+      <table id="stock">
         <tr>
           <th>Produto</th>
           <th>Em estoque</th>
