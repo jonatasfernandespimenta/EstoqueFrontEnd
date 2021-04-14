@@ -23,6 +23,22 @@ function Stock() {
     fetchProductData();
   }, [])
 
+  const handleShouldBuy = (product) => {
+    if(product.quantity / (summed / 15) <= product.days) {
+      return(
+        <div style={{ background: '#20A506', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <h4 style={{color: 'white'}}>SIM</h4>
+        </div>
+      );
+    } else {
+      return(
+        <div style={{ background: '#20A506', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <h4 style={{color: 'white'}}>NÃO</h4>
+        </div>
+      );
+    }
+  }
+
   return(
     <>
       <table>
@@ -32,6 +48,7 @@ function Stock() {
           <th>Velocidade</th>
           <th>Dias de estoque restantes</th>
           <th>Dias de estoque deseajvel</th>
+          <th>Deve comprar?</th>
         </tr>
         {
           product?.map((p) => {
@@ -41,7 +58,8 @@ function Stock() {
                 <td>{p.quantity}</td>
                 <td>{summed / 15}</td>
                 <td>{p.quantity / (summed / 15)}</td>
-                <td>0000</td>
+                <td>{p.days}</td>
+                <td>{handleShouldBuy(p)}</td>
               </tr>
             )
           })
