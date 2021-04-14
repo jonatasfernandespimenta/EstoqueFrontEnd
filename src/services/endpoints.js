@@ -11,3 +11,5 @@ export const getProductByNameOrSku = async(param) => await api.get(`/products/na
 export const getLog = async() => await api.get('/log');
 
 export const createProduct = async(sku, name) => await api.post('/products', { sku, quantity: 0, name });
+
+export const updateProduct = async(id, name, sku, days) => await api.put('/products/' + id, {name, sku, days})

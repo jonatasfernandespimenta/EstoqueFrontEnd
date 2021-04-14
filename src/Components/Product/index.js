@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { getProductByNameOrSku, getProducts } from '../../services/endpoints';
 
-import { Container, Text, Button, Row } from './styles';
+import { Container, Text, Button, Row, ButtonGroup } from './styles';
 
-function Product({ setVisible, setProductSku, setProductName, search }) {
+function Product({ setProductId, setVisible, setProductSku, setProductName, search, setIsUpdate }) {
 
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -23,8 +23,10 @@ function Product({ setVisible, setProductSku, setProductName, search }) {
               <Text>Nome: {item.name}</Text>
               <Text>SKU: {item.sku}</Text>
               <Text>Quantidade: {item.quantity}</Text>
-      
-              <Button onClick={() => { setVisible(true); setProductSku(item.sku); setProductName(item.name) }}>+</Button>
+              <ButtonGroup>
+                <Button onClick={() => { setVisible(true); setProductSku(item.sku); setProductName(item.name) }}>Adicionar</Button>
+                <Button onClick={() => { setVisible(true); setIsUpdate(true); setProductId(item._id) }}>Editar</Button>
+              </ButtonGroup>
             </Row>
           </Container>
         ))

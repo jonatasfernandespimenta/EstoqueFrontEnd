@@ -30,7 +30,8 @@ function Stock() {
           <th>Produto</th>
           <th>Em estoque</th>
           <th>Velocidade</th>
-          <th>Dias de estoque</th>
+          <th>Dias de estoque restantes</th>
+          <th>Dias de estoque deseajvel</th>
         </tr>
         {
           product?.map((p) => {
@@ -40,6 +41,7 @@ function Stock() {
                 <td>{p.quantity}</td>
                 <td>{summed / 15}</td>
                 <td>{p.quantity / (summed / 15)}</td>
+                <td>0000</td>
               </tr>
             )
           })

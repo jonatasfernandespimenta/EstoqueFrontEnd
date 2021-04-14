@@ -11,6 +11,8 @@ function App() {
   const [productName, setProductName] = useState('');
   const [search, setSearch] = useState('');
   const [content, setContent] = useState('home');
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [productId, setProductId] = useState('');
 
   return (
     <div className="Container">
@@ -26,7 +28,7 @@ function App() {
         }
         <div className="Products">
           {
-            handleContent(content, productSku, productName, setProductSku, setProductName, setVisible, visible, search)
+            handleContent(content, productSku, productName, setProductSku, setProductName, setVisible, visible, search, isUpdate, setIsUpdate, setProductId, productId)
           }
         </div>
       </div>

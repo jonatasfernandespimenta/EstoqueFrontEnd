@@ -6,6 +6,7 @@ import Logs from "../../Components/Logs"
 import Product from "../../Components/Product"
 import HomeComponent from "../../Components/Home/"
 import Stock from "../../Components/Stock"
+import UpdateProduct from "../../Components/UpdateProduct"
 
 export const handleMenuButtons = (setContent) => {
   return(
@@ -43,15 +44,18 @@ export const handleMenuButtons = (setContent) => {
   )
 }
 
-export const handleContent = (content, productSku, productName, setProductSku, setProductName, setVisible, visible, search) => {
+export const handleContent = (content, productSku, productName, setProductSku, setProductName, setVisible, visible, search, isUpdate, setIsUpdate, setProductId, productId) => {
   if(content === 'products') {
     return(
       <>
         {          
           visible ?
-          <AddItemModal setVisible={setVisible} productSku={productSku} productName={productName} />
+            !isUpdate ?
+              <AddItemModal setVisible={setVisible} productSku={productSku} productName={productName} />
+            :
+              <UpdateProduct setVisible={setVisible} id={productId} />
           :
-          <Product setVisible={setVisible} setProductSku={setProductSku} setProductName={setProductName} search={search} />
+          <Product setProductId={setProductId} setVisible={setVisible} setProductSku={setProductSku} setProductName={setProductName} search={search} setIsUpdate={setIsUpdate} />
         }
       </>
     );
@@ -71,7 +75,7 @@ export const handleContent = (content, productSku, productName, setProductSku, s
 
   if(content === 'AddProduct') {
     return(
-      <AddProduct/>
+      <AddProduct setVisible={setVisible}/>
     )
   }
 

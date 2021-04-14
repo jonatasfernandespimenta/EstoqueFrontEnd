@@ -1,21 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-charts'
-import { getLog, getProducts } from '../../services/endpoints';
+import { getLog } from '../../services/endpoints';
 
 import { Container } from './styles';
 
 function HomeComponent() {
   const [inputData, setInputData] = useState([]);
-  const [balanceData, setBalanceData] = useState([]);
-  const [productId, setProductId] = useState(0);
+  const [total, setTotal] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await getLog();
-      const productRes = await getProducts();
-      console.log(productRes.data.quantity)
+      const {input, withdraw} = res.data;
+      const result = input.reduce((acc, curr) => {
+        const withdrawObj = withdraw.find(w => w.date === curr.date);
+        acc.push([
+          curr.date,
+          withdrawObj ? 
+          curr.info.quantity - withdrawObj.info.quantity :         
+          curr.info.quantity
+        ]);
+        return acc;
+      }, []);
+
+      setTotal(result)
+
       setInputData(res.data.input);
-      setBalanceData(productRes.data.quantity);
     };
     fetchData();
   }, [])
@@ -23,17 +33,21 @@ function HomeComponent() {
   const data = React.useMemo(
     () => [
       {
+        label: 'Saldo',
+        data: total
+      },
+      {
         label: 'Entrada',
-        data: inputData?.map((i) => [i.date, i.info.quantity]).filter(x => x[0] !== 'Invalid Date')
-      }
+        data: inputData?.map((i) => [i.date, i.info.quantity])
+      },
     ],
-    [inputData, balanceData]
+    [inputData, total]
   )
  
   const axes = React.useMemo(
     () => [
       { primary: true, type: 'ordinal', position: 'bottom' },
-      { position: 'left', type: 'linear', stacked: true }
+      { position: 'left', type: 'linear', stacked: false },
     ],
     []
   )
@@ -43,8 +57,8 @@ function HomeComponent() {
       {
       type:
         i === 0
-          ? 'bar'
-          : 'line'
+          ? 'line'
+          : 'bar'
 
     }),
     []

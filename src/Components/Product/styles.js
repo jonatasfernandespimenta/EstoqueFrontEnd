@@ -21,6 +21,11 @@ export const Row = styled.div`
   }
 `;
 
+export const ButtonGroup = styled.div`
+  width: 100px;
+  margin-right: 20px;
+`;
+
 export const Text = styled.p`
   margin-left: 30px;
   text-align: left;
@@ -38,21 +43,21 @@ export const Button = styled.button`
   border-width: 0px;
   background: #20A506;
   height: 50%;
-  width: 5%;
-  margin-right: 30px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
   font-weight: bold;
   @media only screen 
   and (min-device-width : 300px) 
   and (max-device-width : 812px) {
-    width: 50px;
-    margin-right: 0px;
     margin-bottom: 10px;
+    margin-left: 10px;
   }
 `;
