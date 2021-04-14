@@ -56,7 +56,7 @@ function Stock() {
               <tr>
                 <td>{p.name}</td>
                 <td>{p.quantity}</td>
-                <td>{(handleLast15(p) / 15).toFixed(2)}</td>
+                <td>{(handleLast15(p) / 15).toFixed(3)}</td>
                 <td>{p.quantity / (handleLast15(p) / 15) == Infinity ? '-' : p.quantity / (handleLast15(p) / 15)}</td>
                 <td>{p.days}</td>
                 <td>{handleShouldBuy(p)}</td>
