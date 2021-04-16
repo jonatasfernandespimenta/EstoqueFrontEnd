@@ -26,14 +26,15 @@ body {
 
 @media (min-width:300px) { 
   .Content {
+    margin-top: -1000px;
     display: flex;
-    margin-top: -100vh;
     background-color: transparent;
     grid-area: c;
     padding: 15px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 900px;
   }
 }
 

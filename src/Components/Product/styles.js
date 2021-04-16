@@ -29,7 +29,7 @@ export const ButtonGroup = styled.div`
 export const Text = styled.p`
   margin-left: 30px;
   text-align: left;
-  width: 250px;
+  width: 300px;
 
   @media only screen 
   and (min-device-width : 300px) 

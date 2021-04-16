@@ -44,8 +44,12 @@ function Stock() {
       <table id="stock">
         <tr>
           <th>Produto</th>
+          <th>Und</th>
+          <th>Setor</th>
+          <th>Resp</th>
+          <th>Fornecedor</th>
           <th>Em estoque</th>
-          <th>Velocidade</th>
+          <th>Consumo por mês</th>
           <th>Dias de estoque restantes</th>
           <th>Dias de estoque desejavel</th>
           <th>Dias para fornecimento</th>
@@ -56,6 +60,10 @@ function Stock() {
             return(
               <tr>
                 <td>{p.name}</td>
+                <td>{p.und}</td>
+                <td>{p.sector}</td>
+                <td>{p.resp}</td>
+                <td>{p.provider}</td>
                 <td>{p.quantity}</td>
                 <td>{(handleLast15(p) / 15).toFixed(2)}</td>
                 <td>{p.quantity / (handleLast15(p) / 15) == Infinity ? '-' : p.quantity / (handleLast15(p) / 15)}</td>
