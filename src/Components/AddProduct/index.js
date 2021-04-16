@@ -7,15 +7,18 @@ import { Container, Button } from './styles';
 import { createProduct } from '../../services/endpoints';
 
 function AddProduct() {
-  const [sku, setSku] = useState('');
   const [name, setName] = useState('');
   const [days, setDays] = useState(0);
   const [providerDays, setProviderDays] = useState(0);
+  const [und, setUnd] = useState('');
+  const [sector, setSector] = useState('');
+  const [resp, setResp] = useState('');
+  const [provider, setProvider] = useState('');
 
   const handleProduct = async() => {
 
     try {
-      await createProduct(sku, name, providerDays);
+      await createProduct(name, name, providerDays, und, sector, resp, provider);
       success('😄 Produto cadastrado com sucesso!', 'top-right');
     } catch (e) {
       error('😕 Houve uma falha ao realizar o processo', 'top-right') 
@@ -27,8 +30,11 @@ function AddProduct() {
       <ToastContainer/>
       <Container>
         <h1>Criar produto</h1>
-        <Input placeholderText="SKU" value={sku} onChange={e => setSku(e.target.value)} />
         <Input placeholderText="Nome" value={name} onChange={e => setName(e.target.value)} />
+        <Input placeholderText="Und" value={und} onChange={e => setUnd(e.target.value)} />
+        <Input placeholderText="Setor" value={sector} onChange={e => setSector(e.target.value)} />
+        <Input placeholderText="Resp" value={resp} onChange={e => setResp(e.target.value)} />
+        <Input placeholderText="Fornecedor" value={provider} onChange={e => setProvider(e.target.value)} />
         <br/><br/>
         <label>Dias fornecedor</label>
         <Input placeholderText="Dias de estoque" type="number" value={providerDays} onChange={e => setProviderDays(e.target.value)} />

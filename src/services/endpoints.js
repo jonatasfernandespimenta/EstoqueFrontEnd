@@ -10,6 +10,10 @@ export const getProductByNameOrSku = async(param) => await api.get(`/products/na
 
 export const getLog = async() => await api.get('/log');
 
-export const createProduct = async(sku, name, providerDays) => await api.post('/products', { sku, quantity: 0, name, providerDays: providerDays });
+export const createProduct = async(
+  sku, name, providerDays, und, sector, resp, provider
+) => await api.post('/products', { sku, quantity: 0, name, providerDays: providerDays, und, sector, resp, provider });
 
-export const updateProduct = async(id, name, sku, days, providerDays) => await api.put('/products/' + id, {name, sku, days, providerDays: providerDays})
+export const updateProduct = async(
+  id, name, sku, days, providerDays, und, sector, resp, provider
+) => await api.put('/products/' + id, {name, sku, days, providerDays: providerDays, und, sector, resp, provider})

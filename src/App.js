@@ -21,11 +21,13 @@ function App() {
       { handleMenuButtons(setContent) }
 
       <div className="Content">
+      <br/><br/><br/><br/><br/><br/><br/>
         {
           content === 'products' ? 
             <Input placeholderText="Busque por um produto..." isSearch value={search} onChange={e => setSearch(e.target.value)} content={content} />
           : null
         }
+        <br/><br/><br/><br/>
         <div className="Products">
           {
             handleContent(content, productSku, productName, setProductSku, setProductName, setVisible, visible, search, isUpdate, setIsUpdate, setProductId, productId)

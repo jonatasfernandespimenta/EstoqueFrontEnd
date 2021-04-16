@@ -40,13 +40,13 @@ body {
 @media (min-width:1025px) { 
   .Content {
     display: flex;
-    margin-top: -90vh;
     background-color: transparent;
     grid-area: c;
     padding: 15px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 950px;
   }
 }
 
