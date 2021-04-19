@@ -5,14 +5,12 @@ import { Container, Row, Text } from '../Product/styles';
 // import { Container } from './styles';
 
 function Logs() {
-  const [inputData, setInputData] = useState(null);
   const [withdrawData, setWithdrawData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await getLog();
-      setInputData(res.data.input);
-      setWithdrawData(res.data.withdraw);
+      setWithdrawData(res.data);
     };
     fetchData();
   }, [])
@@ -20,30 +18,18 @@ function Logs() {
   return (
     <>
       <Container>
-      {
-        inputData?.map((item) => {
-          return(
-              <Row>
-                <Text>Data: {item.date}</Text>
-    
-                <Text>Tipo: Entrada</Text>
-    
-                <Text>Quantidade: {item.info.quantity}</Text>
-              </Row>
-          )
-        }
-        )
-      }
 
       {
-        withdrawData?.map((item) => {
+        withdrawData?.product.map((item) => {
           return(
             <Row>
-              <Text>Data: {item.date}</Text>
+              <Text>Produto: {item.name}</Text>
+
+              <Text>Data: {item.exits.map(i => i.withdrawDate === null ? item.exits.map(i => i.inputDate) : item.exits.map(i => i.withdrawDate))}</Text>
           
-              <Text>Tipo: Saida</Text>
+              <Text>Tipo: {item.exits.map(i => i.withdrawDate === null ? 'Entrada' : 'Saida')}</Text>
           
-              <Text>Quantidade: {item.info.quantity}</Text>
+              <Text>Quantidade: {item.exits.map(i => i.quantity)}</Text>
             </Row>
           );
         }

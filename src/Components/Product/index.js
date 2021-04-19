@@ -23,8 +23,21 @@ function Product({ setProductId, setVisible, setProductSku, setProductName, sear
               <Text>Nome: {item.name}</Text>
               <Text>Quantidade: {item.quantity}</Text>
               <ButtonGroup>
-                <Button onClick={() => { setVisible(true); setProductSku(item.sku); setProductName(item.name) }}>Adicionar</Button>
-                <Button onClick={() => { setVisible(true); setIsUpdate(true); setProductId(item._id) }}>Editar</Button>
+                <Button onClick={() => { 
+                  setVisible(true); 
+                  setIsUpdate(false); 
+                  setProductSku(item.sku); 
+                  setProductName(item.name) 
+                }}>
+                  Adicionar Item
+                </Button>
+
+                <Button onClick={() => { 
+                  setVisible(true); 
+                  setIsUpdate(true); 
+                  setProductId(item._id) }}>
+                    Editar Produto
+                </Button>
               </ButtonGroup>
             </Row>
           </Container>

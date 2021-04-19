@@ -45,6 +45,7 @@ export const handleMenuButtons = (setContent) => {
 }
 
 export const handleContent = (content, productSku, productName, setProductSku, setProductName, setVisible, visible, search, isUpdate, setIsUpdate, setProductId, productId) => {
+  console.log(isUpdate)
   if(content === 'products') {
     return(
       <>
@@ -63,7 +64,7 @@ export const handleContent = (content, productSku, productName, setProductSku, s
 
   if(content === 'home') {
     return(
-      <HomeComponent/>
+      <Logs/>
     )
   }
 

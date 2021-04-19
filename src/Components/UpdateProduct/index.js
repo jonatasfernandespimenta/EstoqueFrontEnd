@@ -22,7 +22,7 @@ function UpdateProduct({ setVisible, id }) {
       setDays(res.data.days)
     }
     fetchProducts()
-  }, [])
+  }, [id])
 
   const handleProduct = async() => {
 

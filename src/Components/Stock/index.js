@@ -11,20 +11,21 @@ function Stock() {
     const fetchProductData = async() => {
       const res = await getProducts();
       const withdrawRes = await getLog();
+
       setProduct(res.data)
       setWithdrawRes(withdrawRes)
     };
     fetchProductData();
   }, [])
 
-  const handleLast15 = (product) => {
-    const last15 = withdrawRes?.data.withdraw.filter(i => i.info.sku == product.sku).slice(Math.max(withdrawRes?.data.withdraw.length - 15, 0))
-    const summed = last15?.map(i => i.info.quantity).reduce((a, b) => a + b, 0)
+  const handleLast30 = (product) => {
+    const last30 = withdrawRes?.data.product.filter(i => i.name == product.sku).slice(Math.max(withdrawRes?.data.length - 30, 0))
+    const summed = last30?.map(i => i.exits.map(x => x.quantity)).reduce((a, b) => a + b, 0)
     return summed
   }
 
   const handleShouldBuy = (product) => {
-    if((product.quantity / (handleLast15(product) / 15)) - product.providerDays <= product.days) {
+    if((product.quantity / (handleLast30(product) / 30)) - product.providerDays <= product.days) {
       return(
         <div style={{ background: '#d10', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h4 style={{color: 'white'}}>SIM</h4>
@@ -65,8 +66,8 @@ function Stock() {
                 <td>{p.resp}</td>
                 <td>{p.provider}</td>
                 <td>{p.quantity}</td>
-                <td>{(handleLast15(p) / 15).toFixed(2)}</td>
-                <td>{p.quantity / (handleLast15(p) / 15) == Infinity ? '-' : p.quantity / (handleLast15(p) / 15)}</td>
+                <td>{(handleLast30(p) / 30).toFixed(2)}</td>
+                <td>{p.quantity / (handleLast30(p) / 30) == Infinity ? '-' : p.quantity / (handleLast30(p) / 30)}</td>
                 <td>{p.days}</td>
                 <td>{p.providerDays}</td>
                 <td>{handleShouldBuy(p)}</td>
