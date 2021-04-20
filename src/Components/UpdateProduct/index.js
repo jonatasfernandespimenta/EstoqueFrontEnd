@@ -20,6 +20,11 @@ function UpdateProduct({ setVisible, id }) {
       const res = await getProduct(id);
       setName(res.data.name)
       setDays(res.data.days)
+      setUnd(res.data.und)
+      setSector(res.data.sector)
+      setResp(res.data.resp)
+      setProvider(res.data.provider)
+      setProviderDays(res.data.providerDays)
     }
     fetchProducts()
   }, [id])

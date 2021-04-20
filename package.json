@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^12.1.10",
     "add": "^2.0.6",
     "axios": "^0.21.1",
+    "loadash": "^1.0.0",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-base64-downloader": "^2.1.6",
     "react-charts": "^2.0.0-beta.7",
