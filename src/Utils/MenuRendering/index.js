@@ -64,7 +64,7 @@ export const handleContent = (content, productSku, productName, setProductSku, s
 
   if(content === 'home') {
     return(
-      <Logs/>
+      <HomeComponent/>
     )
   }
 

@@ -104,3 +104,11 @@ table {
   background-color: #4CAF50;
   color: white;
 }
+
+#products-dropdown {
+  margin-top: 50px;
+  margin-bottom: -50px;
+  height: 30px;
+  border-radius: 6px;
+  border-width: 2px;
+}

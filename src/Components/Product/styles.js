@@ -5,6 +5,17 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
+export const Column = styled.div`
+  width: 100%;
+  height: 10%;
+  background: white;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+`;
+
 export const Row = styled.div`
   width: 100%;
   height: 10%;
@@ -28,7 +39,7 @@ export const ButtonGroup = styled.div`
 
 export const Text = styled.p`
   margin-left: 30px;
-  text-align: left;
+  text-align: center;
   width: 300px;
 
   @media only screen 

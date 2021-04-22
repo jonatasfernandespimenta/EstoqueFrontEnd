@@ -116,7 +116,7 @@ function Stock() {
                 <td>{p.provider}</td>
                 <td>{p.quantity}</td>
                 <td>{calculateVelocity(p).toFixed(2)}</td>
-                <td>{calculateMedian(p) == Infinity ? '-' : calculateMedian(p).toFixed(0)}</td>
+                <td>{calculateMedian(p) === Infinity ? '-' : calculateMedian(p).toFixed(0)}</td>
                 <td>{p.days}</td>
                 <td>{p.providerDays}</td>
                 <td>{handleShouldBuy(p)}</td>

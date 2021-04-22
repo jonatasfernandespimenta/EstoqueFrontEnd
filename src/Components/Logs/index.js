@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getLog } from '../../services/endpoints';
-import { Container, Row, Text } from '../Product/styles';
+import { Column, Container, Row, Text } from '../Product/styles';
 
 // import { Container } from './styles';
 
@@ -24,12 +24,17 @@ function Logs() {
           return(
             <Row>
               <Text>Produto: {item.name}</Text>
-
-              <Text>Data: {item.exits.map(i => i.withdrawDate === null ? item.exits.map(i => i.inputDate) : item.exits.map(i => i.withdrawDate))}</Text>
-          
-              <Text>Tipo: {item.exits.map(i => i.withdrawDate === null ? 'Entrada' : 'Saida')}</Text>
-          
-              <Text>Quantidade: {item.exits.map(i => i.quantity)}</Text>
+          {item.exits.map((exit) => {
+              return(
+                <Column>
+                <Text>Data: {exit.withdrawDate === null ? exit.inputDate : exit.withdrawDate}</Text>
+            
+                <Text>Tipo: {exit.withdrawDate}</Text>
+            
+                <Text>Quantidade: {exit.quantity}</Text>
+                </Column>
+                )
+              })}
             </Row>
           );
         }
