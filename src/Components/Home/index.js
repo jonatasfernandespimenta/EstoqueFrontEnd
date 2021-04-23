@@ -70,11 +70,10 @@ function HomeComponent() {
   return(
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
     
-
     <select name="products" id="products-dropdown" onChange={e => handleSelection(e)}>
     <option value="" selected disabled hidden>Decor cristal Kruscher 0,10 X 1,22 X 50</option>
       {
-        mappedProducts.map(x => {
+        mappedProducts.sort().map(x => {
           return(
             <option value={x}>{x}</option>
           )
