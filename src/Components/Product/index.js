@@ -21,7 +21,7 @@ function Product({ setProductId, setVisible, setProductSku, setProductName, sear
           <Container>
             <Row>
               <Text>Nome: {item.name}</Text>
-              <Text>Quantidade: {item.quantity}</Text>
+              <Text>Em estoque: {item.quantity}</Text>
               <ButtonGroup>
                 <Button onClick={() => { 
                   setVisible(true); 

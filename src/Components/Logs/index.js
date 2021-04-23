@@ -18,7 +18,6 @@ function Logs() {
   return (
     <>
       <Container>
-
       {
         withdrawData?.product.map((item) => {
           return(
@@ -29,7 +28,7 @@ function Logs() {
                 <Column>
                 <Text>Data: {exit.withdrawDate === null ? exit.inputDate : exit.withdrawDate}</Text>
             
-                <Text>Tipo: {exit.withdrawDate}</Text>
+                <Text>Tipo: {exit.withdrawDate === null ? 'Entrada' : 'Saida'}</Text>
             
                 <Text>Quantidade: {exit.quantity}</Text>
                 </Column>

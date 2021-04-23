@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getLog, getProductByNameOrSku, getProducts } from '../../services/endpoints';
 
 import {
-  LineChart,
   Line,
   XAxis,
   YAxis,
@@ -34,28 +33,28 @@ function HomeComponent() {
       setInfo(
         logRes?.data.product?.filter(i => i?.name === 'Decor cristal Kruscher 0,10 X 1,22 X 50')
         .map(p => p?.exits.map(x => [x.withdrawDate, x.quantity]))
-        )
+      )
     };
     fetchProduct()
   }, [])
+
+  // Entradas da data X - saidas da data X = Saldo da data X 
 
   const mappedProducts = products.map(x => x.name)
 
   logs?.product?.filter(i => i?.name === 'Decor cristal Kruscher 0,10 X 1,22 X 50')[0].exits.map(x => x)
 
   const data = info.map(x => x.map(crr => {
-      return {
-        "name": crr[0],
-        "quantidade": crr[1],
-        "saldo": Math.floor(Math.random() * 10),
-        "amt": 20
-      }
-    }));
+    return {
+      "name": crr[0],
+      "quantidade": crr[1],
+      "saldo": Math.floor(Math.random() * 10),
+    }}
+  ));
 
   const handleSelection = async(e) => {
     setName(e.target.value)
     const res = await getProductByNameOrSku(e.target.value);
-
     const productsRes = await getProducts();
     setProducts(productsRes.data)
 
